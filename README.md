@@ -1,99 +1,85 @@
-# Project Context — SpendWise / Expense Intelligence
+# MySQL Database — Expense Intelligence
 
-## 1. Project Overview
+## 1. Overview
 
-I am developing a **Personal Expense Intelligence System** designed to help users manage monthly finances, analyze spending habits, estimate the minimum money needed for essential living expenses, identify unnecessary spending, and discover opportunities to save more money.
+This directory contains the MySQL database scripts for the **Personal Expense Intelligence System**.
 
-The project will continuously evolve with additional features and technologies until it is fully completed.
+The database is designed to store expense transactions, income records, expense categories, monthly budgets, financial summaries, and savings recommendations.
 
-## 2. Current Technology Plan
+Its purpose is to provide structured financial data for analyzing spending habits, estimating essential living costs, comparing monthly expenses, and identifying potential savings opportunities.
 
-- MySQL — database management
-- Python — application logic and backend
-- Pandas — expense data analysis
-- NumPy — numerical calculations and projections
-- HTML — frontend structure
-- CSS — frontend styling
+## 2. Database Information
 
-More technologies may be added as the project develops.
+- **Database Name:** `expense_intelligence`
+- **Database Management System:** MySQL
+- **Number of Tables:** 6
+- **Architecture:** Single-user database without a user table
 
-## 3. Database Details
+## 3. Database Tables
 
-Database name: `expense_intelligence`
+| Table | Purpose |
+|---|---|
+| `categories` | Stores expense categories and their types |
+| `expenses` | Stores individual expense transactions |
+| `income` | Stores income records |
+| `monthly_summary` | Stores monthly financial summaries |
+| `monthly_budget` | Stores planned and actual category budgets |
+| `recommendations` | Stores spending-reduction and savings recommendations |
 
-There are six tables:
+## 4. Table Relationships
 
-1. `categories` — expense categories and their types
-2. `expenses` — individual expense transactions
-3. `income` — income records
-4. `monthly_summary` — monthly financial summaries
-5. `monthly_budget` — planned and actual category spending
-6. `recommendations` — personalized saving recommendations
+- One category can be associated with multiple expenses.
+- One category can have multiple monthly budget records.
+- One category can be associated with multiple recommendations.
+- The `expenses`, `monthly_budget`, and `recommendations` tables reference `categories` through foreign keys where applicable.
+- Income and monthly summaries are stored independently in this initial single-user design.
 
-There is **no user table** because the initial project is designed for a single user.
+## 5. SQL Files
 
-The `expenses`, `monthly_budget`, and `recommendations` tables reference `categories` through foreign keys where applicable.
+| File | Description |
+|---|---|
+| `01_create_database.sql` | Creates the `expense_intelligence` database |
+| `02_create_tables.sql` | Creates the six database tables and their relationships |
+| `03_insert_categories.sql` | Inserts the initial expense categories |
+| `04_sample_data.sql` | Inserts fictional sample income and expenses |
+| `05_analysis_queries.sql` | Contains SQL queries for financial analysis |
 
-## 4. GitHub Progress
+## 6. Execution Order
 
-GitHub repository: `https://github.com/Sadiqshaik455/expense-intelligence`
+Run the SQL scripts in the following order using MySQL Workbench:
 
-Repository visibility: Public.
+1. `01_create_database.sql`
+2. `02_create_tables.sql`
+3. `03_insert_categories.sql`
+4. `04_sample_data.sql`
+5. `05_analysis_queries.sql`
 
-Repository description:
+Execute the sample-data script only once on a fresh database to avoid duplicate records.
 
-"A Personal Expense Intelligence System designed to help users manage monthly finances, analyze spending habits, estimate essential living costs, identify unnecessary expenses, and discover opportunities to save more money. The project will continuously evolve with new features and technologies throughout development."
+## 7. Analysis Capabilities
 
-The following five SQL files have been uploaded to the repository root:
+The database supports queries for:
 
-- `01_create_database.sql`
-- `02_create_tables.sql`
-- `03_insert_categories.sql`
-- `04_sample_data.sql`
-- `05_analysis_queries.sql`
+- Total income and expenses
+- Remaining money
+- Category-wise spending
+- Essential versus non-essential expenses
+- Highest-spending categories
+- Daily and monthly expense totals
+- Monthly budget comparisons
 
-A `database/` folder also exists, currently containing a `README.md` file.
+More advanced calculations, including spending forecasts, survival-budget estimates, and personalized savings recommendations, will be developed as the project progresses.
 
-The latest commit message is:
-`Add MySQL schema, sample data and analysis queries`
+## 8. Future Development
 
-## 5. Completed Work
+This database will be integrated with Python, Pandas, and NumPy for financial analysis and later connected to a responsive HTML/CSS frontend.
 
-- Created the MySQL database and table definitions.
-- Prepared the category insertion script.
-- Prepared fictional sample income and expense records.
-- Prepared SQL analysis queries.
-- Saved all five SQL files locally.
-- Uploaded all five files to the public GitHub repository.
-- Added the repository description.
+Additional technologies and features may be introduced throughout development.
 
-## 6. Current Status
+## 9. Sample Data and Privacy
 
-The repository is visible on GitHub. The five SQL files are currently in the repository root instead of inside the `database/` folder. We plan to organize the files more cleanly.
+The included sample records are fictional and intended for testing and demonstration. No real financial records or database credentials should be committed to this public repository.
 
-The root `README.md` is still basic and needs professional documentation.
+---
 
-## 7. Next Steps
-
-Proceed step by step, without skipping instructions:
-
-1. Improve the root `README.md` with the project purpose, features, technologies, database tables, relationships, setup instructions, and development roadmap.
-2. Organize the SQL files inside `database/`.
-3. Test the SQL scripts in MySQL Workbench and verify all six tables and their relationships.
-4. Add SQL analysis queries and test their results.
-5. Connect Python to MySQL.
-6. Use Pandas and NumPy for expense analysis and projections.
-7. Develop the complete responsive HTML/CSS frontend, including:
-   - Landing page
-   - Dashboard
-   - Add expense
-   - Transaction history
-   - Monthly report
-   - Budget planner
-   - Savings recommendations
-8. Connect the frontend to the backend.
-9. Test, document, and prepare the completed project for a resume.
-
-## 8. Instructions for the Assistant
-
-Act as a step-by-step project mentor. Give exact instructions for the current stage, including which GitHub button to click or which MySQL file to edit. Do not jump ahead before the current step is completed. Explain concepts clearly, and avoid giving code when only instructions or database table designs are requested. Keep the project beginner-friendly, organized, and professional.
+Part of the **Personal Expense Intelligence System** project. The database schema and features will evolve as development continues.
