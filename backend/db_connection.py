@@ -10,7 +10,7 @@ def get_connection():
         connection = mysql.connector.connect(
             host=os.getenv("DB_HOST", "localhost"),
             user=os.getenv("DB_USER", "root"),
-            password=os.getenv("DB_PASSWORD", "Muntaz_201*"),
+            password=os.getenv("DB_PASSWORD", "password"),
             database=os.getenv("DB_NAME", "spendwise")
         )
 
